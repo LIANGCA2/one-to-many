@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "46a3a581-9f3c-4916-b195-8f26dfef500c",
+		"name": "oneToOne",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all klasses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/klasses",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"klasses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add a klass no leader",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"name\": \"wwwww\"\n\n    }"
+				},
+				"url": {
+					"raw": "localhost:8080/klasses",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"klasses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add a klass with leader",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n   \n        \"name\": \"123asd\",\n        \"leader\": {\n        \t\"name\":\"asd111111\"\n        }\n    }"
+				},
+				"url": {
+					"raw": "localhost:8080/klasses",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"klasses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update a klass",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"id\": 2,\n        \"name\": \"123asd11111111111111111111\"\n\n    }"
+				},
+				"url": {
+					"raw": "localhost:8080/klasses/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"klasses",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete a klass",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/klasses/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"klasses",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all leaders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/leaders",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"leaders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add a leader with no klass",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"wwwww\"\n\n    }"
+				},
+				"url": {
+					"raw": "localhost:8080/leaders",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"leaders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add leader with a  klass",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n   \n        \"name\": \"222\",\n        \"klass\": {\n        \t\"name\":\"asd\"\n        }\n    }"
+				},
+				"url": {
+					"raw": "localhost:8080/leaders",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"leaders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update a leader",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\": 3,\n        \"name\": \"222qqqqqq\"\n    }"
+				},
+				"url": {
+					"raw": "localhost:8080/leaders/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"leaders",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete a leader",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/leaders/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"leaders",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
