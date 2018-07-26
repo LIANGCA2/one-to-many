@@ -1,21 +1,23 @@
-package com.leo.one.to.many.entitis;
+package com.leo.many.to.many.entites;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author LIULE9
  */
 @Entity
-public class Employee {
+public class Group {
+
 
     private Integer id;
     private String name;
-    private Company company;
     private ZonedDateTime createDate = ZonedDateTime.now();
+    private List<User> users;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,14 +46,12 @@ public class Employee {
         this.createDate = createDate;
     }
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "company_id")
-    public Company getCompany() {
-        return company;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "groups")
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setCompany(Company company) {
-        this.company = company;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }

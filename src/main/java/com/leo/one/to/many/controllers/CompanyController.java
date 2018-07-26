@@ -1,6 +1,6 @@
 package com.leo.one.to.many.controllers;
 
-import com.leo.one.to.many.entitis.Company;
+import com.leo.one.to.many.entites.Company;
 import com.leo.one.to.many.repositories.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

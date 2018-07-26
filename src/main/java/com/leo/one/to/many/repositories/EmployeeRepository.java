@@ -1,6 +1,6 @@
 package com.leo.one.to.many.repositories;
 
-import com.leo.one.to.many.entitis.Employee;
+import com.leo.one.to.many.entites.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

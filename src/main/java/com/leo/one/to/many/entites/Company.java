@@ -1,4 +1,4 @@
-package com.leo.one.to.many.entitis;
+package com.leo.one.to.many.entites;
 
 import org.springframework.data.annotation.CreatedDate;
 
