@@ -1,7 +1,7 @@
-package com.leo.one.to.many.controllers;
+package com.leo.many.to.many.controllers;
 
-import com.leo.one.to.many.entites.Company;
-import com.leo.one.to.many.repositories.CompanyRepository;
+import com.leo.many.to.many.entites.User;
+import com.leo.many.to.many.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,35 +14,35 @@ import java.util.List;
  * @author LIULE9
  */
 @RestController
-@RequestMapping("/companies")
-public class CompanyController {
+@RequestMapping("users")
+public class UserController {
 
     @Autowired
-    private CompanyRepository repository;
+    private UserRepository repository;
 
     @GetMapping
-    public ResponseEntity<List<Company>> findAllCompany(){
+    public ResponseEntity<List<User>> findAllUser() {
         return ResponseEntity.ok(repository.findAll());
     }
 
     @PostMapping
     @Transactional
-    public ResponseEntity saveCompany(@RequestBody Company company){
-        company.getEmployees().forEach(employee -> employee.setCompany(company));
-        repository.save(company);
+    public ResponseEntity saveUser(@RequestBody User user) {
+        user.getGroups().forEach(groups -> groups.getUsers().add(user));
+        repository.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity updateCompany(@RequestBody Company company){
-        repository.save(company);
+    public ResponseEntity updateUser(@RequestBody User user) {
+        repository.save(user);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
     }
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity deleteCompany(@PathVariable("id") Integer id){
+    public ResponseEntity deleteUser(@PathVariable("id") Integer id) {
         try {
             repository.deleteById(id);
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
@@ -51,4 +51,5 @@ public class CompanyController {
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
     }
+
 }

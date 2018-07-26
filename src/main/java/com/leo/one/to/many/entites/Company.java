@@ -4,6 +4,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public class Company {
     private Integer id;
     private String name;
     private ZonedDateTime createDate = ZonedDateTime.now();
-    private List<Employee> employees;
+    private List<Employee> employees = new ArrayList<>();
 
     public Company() {
     }

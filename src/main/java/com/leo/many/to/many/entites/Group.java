@@ -1,5 +1,6 @@
 package com.leo.many.to.many.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -11,23 +12,25 @@ import java.util.List;
  * @author LIULE9
  */
 @Entity
+@Table(name="t_group")
 public class Group {
 
 
-    private Integer id;
+    private Integer groupId;
     private String name;
     private ZonedDateTime createDate = ZonedDateTime.now();
-    private List<User> users;
+    private List<User> users = new ArrayList<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getId() {
-        return id;
+    public Integer getGroupId() {
+        return groupId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setGroupId(Integer groupId) {
+        this.groupId = groupId;
     }
+
 
     public String getName() {
         return name;
@@ -46,7 +49,8 @@ public class Group {
         this.createDate = createDate;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "groups")
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL, targetEntity = User.class, fetch = FetchType.LAZY, mappedBy = "groups")
     public List<User> getUsers() {
         return users;
     }

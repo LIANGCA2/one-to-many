@@ -1,7 +1,7 @@
-package com.leo.one.to.many.controllers;
+package com.leo.many.to.many.controllers;
 
-import com.leo.one.to.many.entites.Company;
-import com.leo.one.to.many.repositories.CompanyRepository;
+import com.leo.many.to.many.entites.Group;
+import com.leo.many.to.many.repositories.GroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,35 +14,35 @@ import java.util.List;
  * @author LIULE9
  */
 @RestController
-@RequestMapping("/companies")
-public class CompanyController {
+@RequestMapping("groups")
+public class GroupController {
 
     @Autowired
-    private CompanyRepository repository;
+    private GroupRepository repository;
 
     @GetMapping
-    public ResponseEntity<List<Company>> findAllCompany(){
+    public ResponseEntity<List<Group>> findAllGroup() {
         return ResponseEntity.ok(repository.findAll());
     }
 
     @PostMapping
     @Transactional
-    public ResponseEntity saveCompany(@RequestBody Company company){
-        company.getEmployees().forEach(employee -> employee.setCompany(company));
-        repository.save(company);
+    public ResponseEntity saveGroup(@RequestBody Group group) {
+        group.getUsers().forEach(users -> users.getGroups().add(group));
+        repository.save(group);
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity updateCompany(@RequestBody Company company){
-        repository.save(company);
+    public ResponseEntity updateGroup(@RequestBody Group group) {
+        repository.save(group);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
     }
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity deleteCompany(@PathVariable("id") Integer id){
+    public ResponseEntity deleteGroup(@PathVariable("id") Integer id) {
         try {
             repository.deleteById(id);
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
